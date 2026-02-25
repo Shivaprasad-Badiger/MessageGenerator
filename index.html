@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Referral Message Generator</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  background: white;
+  width: 100%;
+  max-width: 700px;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #333;
+}
+
+label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 15px;
+  display: block;
+  color: #444;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.generate-btn {
+  background: #667eea;
+  color: white;
+}
+
+.generate-btn:hover {
+  background: #5a67d8;
+}
+
+.copy-btn {
+  background: #48bb78;
+  color: white;
+}
+
+.copy-btn:hover {
+  background: #38a169;
+}
+
+textarea {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  resize: none;
+  min-height: 220px;
+  font-size: 14px;
+  line-height: 1.6;
+  background: #f9fafb;
+}
+
+footer {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 12px;
+  color: #666;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Referral Message Generator</h1>
+
+  <label>Referrer Name</label>
+  <input type="text" id="name" placeholder="Tejasvi">
+
+  <label>Company Name</label>
+  <input type="text" id="company" placeholder="Synechron">
+
+  <label>Job Title</label>
+  <input type="text" id="title" placeholder="React Developer">
+
+  <label>Job URL</label>
+  <input type="text" id="url" placeholder="Paste job link here">
+
+  <label>Job ID</label>
+  <input type="text" id="jobid" placeholder="JR123456">
+
+  <div class="button-group">
+    <button class="generate-btn" onclick="generateMessage()">Generate</button>
+    <button class="copy-btn" id="copyBtn" onclick="copyMessage()">Copy</button>
+  </div>
+
+  <textarea id="output" placeholder="Your generated message will appear here..."></textarea>
+
+  <footer>
+    Built by Shivaprasad Badiger 🚀
+  </footer>
+</div>
+
+<script>
+function generateMessage() {
+  const name = document.getElementById("name").value;
+  const company = document.getElementById("company").value;
+  const title = document.getElementById("title").value;
+  const url = document.getElementById("url").value;
+  const jobid = document.getElementById("jobid").value;
+
+  const message = `Hi ${name},
+
+I came across the ${title} opening at ${company}. I have 2+ years of experience with React.js and frontend development and would love to apply.
+
+Job Link: ${url}
+
+Job Id: ${jobid}
+
+If possible, could you please refer me for this role? Happy to share my resume.
+
+Thanks a lot!
+Shivaprasad Badiger
+Portfolio: https://shivbadiger.space/
+Resume: https://drive.google.com/file/d/1LdEiagfbvuLy-AURQHvs9z5A_-3nZJTm/view`;
+
+  document.getElementById("output").value = message;
+}
+
+function copyMessage() {
+  const textarea = document.getElementById("output");
+
+  if (!textarea.value.trim()) return;
+
+  textarea.select();
+  document.execCommand("copy");
+
+  const btn = document.getElementById("copyBtn");
+  btn.innerText = "Copied!";
+  setTimeout(() => {
+    btn.innerText = "Copy";
+  }, 2000);
+}
+</script>
+
+</body>
+</html>
